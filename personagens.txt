@@ -1,0 +1,2 @@
+{'nome': 'Menezes', 'senha': '12344', 'genero': 'Homem', 'classe': 'Controlador', 'dificuldade': 'Ensino medio no if durante uma pandemia', 'server': 'Europa'}
+{'nome': 'Lara', 'senha': '4567', 'genero': 'Mulher', 'classe': 'Suporte', 'dificuldade': 'Medio', 'server': 'Asia'}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+</head>
+<body>
+<h1>Registre seu personagem</h1>
+<hr>
+
+<form action = "/cgi-bin/handle_form.py" method = "post">
+    Apelido: <br><input type = "text" name = "apelido"><br>
+
+    Senha: <br><input type = "text" name = "senha"><br>
+    Gênero:<br>
+    <select name="gender" id="gender">
+        <option value="Homem">Homem</option>
+        <option value="Mulher">Mulher</option>
+        <option value="Outro">Outro</option>
+        <option value="Genero não existe">Genero não existe</option>
+      </select>
+      <br>
+    Classe:<br>
+    <select name="class" id="class">
+        <option value="Assassino">Assassino</option>
+        <option value="Suporte">Suporte</option>
+        <option value="Tanque">Tanque</option>
+        <option value="Controlador">Controlador</option>
+      </select>
+    <br>
+    Dificuldade:<br>
+    <select name="dif" id="dif">
+        <option value="Facil">Fácil</option>
+        <option value="Medio">Médio</option>
+        <option value="Dificil">Dificil</option>
+        <option value="Ensino medio no if durante uma pandemia">Ensino médio no if durante uma pandemia.</option>
+      </select>
+    <br>
+    Servidor:<br>
+    <select name="server" id="server">
+        <option value="Americas">Américas</option>
+        <option value="Asia">Ásia</option>
+        <option value="Europa">Europa</option>
+        <option value="Africa">África</option>
+      </select>
+    <br>
+    <br>
+    <input type = "submit" value = "Enviar">
+</form>
+<br>
+<a href="/index.html">VOLTAR A TELA INICIAL </a>
+</body>
+</html>
