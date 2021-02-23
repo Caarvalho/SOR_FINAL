@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisa</title>
+</head>
+<body>
+<div class="center">
+    <h1>Pesquise um personagem</h1>
+<form action = "/cgi-bin/pesquisa.py" method = "post">
+    Nome: <br><input type = "text" name = "nick">
+    <br>
+    <input type = "submit" value = "Enviar">
+</form>
+<br>
+<a href="index.html">VOLTAR A TELA INICIAL</a>
+</div>
+<style>
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+</style>
