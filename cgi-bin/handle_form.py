@@ -2,8 +2,9 @@
 
 import cgitb
 import cgi
+import json
 
-personagem = {}
+
 form = cgi.FieldStorage()
 
 username = form.getvalue('apelido')
@@ -15,20 +16,31 @@ server = form.getvalue('server')
 confirmed = form.getvalue("confirmed")
 
 def salvarPersonagem():
+    personagem = {}
     personagem["nome"] = username
     personagem["senha"] = password
     personagem["genero"] = genero
     personagem["classe"] = classe
     personagem["dificuldade"] = dif
     personagem["server"] = server
-        
+    personagens = []   
     try:
-        arquivo = open('personagens.txt', 'a', encoding='utf-8')
+        arquivo = open('personagens.json')
     except:
-        print("DEU RUIM")
+        print("primeiro registro")
+        with open('personagens.json', 'w') as f:
+            personagens.append(personagem)
+            json.dump(personagens, f)
+
     else:
-        arquivo.write(f'{personagem}\n')
+        personagens = json.loads(arquivo.read())
+        personagens.append(personagem)
         arquivo.close()
+        with open('personagens.json', 'w') as f:
+            json.dump(personagens, f)
+
+    finally:
+        personagem = {}
 
 cgitb.enable()
 
@@ -40,7 +52,7 @@ def montarTabela():
                     <title>Confirmacao</title>
                 </head>
                 <body>""")
-
+    print("<div class='center'>")
     print("<h1>Voce confirma esses dados?</h1><hr>")
 
     print("<table border=1>")
@@ -67,6 +79,7 @@ def montarTabela():
     print("""
         <button onclick="confirmed()" name="confirmar"> CONFIRMAR</button>
     """)
+    
     print("""<script type="text/javascript">
         function confirmed(){
             var form = document.createElement('form');
@@ -114,8 +127,20 @@ def montarTabela():
             }
             </script>"""
             )
+    
+    print("</div>")
     print("</body>")
     print("</html>")
+    print(""" <style>
+    .center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+</style>""")
+
 
 def aposConfirmacao():
     print("Content-type:text/html\r\n\r\n")
@@ -125,10 +150,19 @@ def aposConfirmacao():
                     <title>Confirmacao</title>
                 </head>
                 <body>""")
+    print("<div class='center'>")
     print("<h1> CADASTRO CONCLUIDO </h1>")
-    print("<br>")
     print('<a href="../index.html"> Voltar a tela inicial </a>')
-    print("</body></html>")
+    print("</body></div></html>")
+    print(""" <style>
+    .center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+</style>""")
 
 
 if confirmed != 'True':
